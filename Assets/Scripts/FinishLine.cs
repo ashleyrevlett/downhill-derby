@@ -3,17 +3,17 @@ using System.Collections;
 
 public class FinishLine : MonoBehaviour {
 
-	private LevelController level;
+	private GameController gc;
 
 	// Use this for initialization
 	void Start () {
-		level = GameObject.FindGameObjectWithTag ("GameController").GetComponent<LevelController> ();
+		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 	}
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("Entered! " + other.name);
 		if (other.gameObject.name == "ColliderBody" || other.gameObject.name == "ColliderBottom" || other.gameObject.name == "ColliderFront") {
-			level.EndRace ();
+			gc.CompleteRace ();
 		}
 	}
 

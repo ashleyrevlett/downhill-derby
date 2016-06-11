@@ -8,8 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457170}
-  - 114: {fileID: 11475648}
-  - 82: {fileID: 8288750}
+  - 82: {fileID: 8228132}
+  - 114: {fileID: 11492404}
+  - 114: {fileID: 11408768}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -24,13 +25,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 187.10468, y: 85.2559, z: 267.518}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8288750
+--- !u!82 &8228132
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -39,9 +40,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7db0c87ec4fdb0e48af04349c4f14df9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.201
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -104,7 +105,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11475648
+--- !u!114 &11408768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,18 +113,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 196940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490afbb043057453ab44f59eba982f38, type: 3}
+  m_Script: {fileID: 11500000, guid: a16ce07724fd643c582fc68f916bd210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLine: {fileID: 0}
-  finishLine: {fileID: 0}
-  raceStarted: 0
-  timeText: {fileID: 0}
-  countdownText: {fileID: 0}
-  finishPanel: {fileID: 0}
-  finishTimeText: {fileID: 0}
-  countdownBeep: {fileID: 8300000, guid: 76ee6a63778b14e4dae44d7f5c2bf9ab, type: 3}
-  countdownBeepHigh: {fileID: 8300000, guid: 8b308d445717d486296ffa3d8dc89ad0, type: 3}
+--- !u!114 &11492404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99a46f2ff0704fdebaf3490451394cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuUI: {fileID: 0}
+  levelUI: {fileID: 0}
+  currentLevel: 1
+  levels:
+  - buildSceneNumber: 1
+    maxTime: 30
+    levelMusic: {fileID: 8300000, guid: d48ab83e9f08441ad8beb4dfbbe13dbc, type: 3}
+    levelSelectButton: {fileID: 0}
+    unlocked: 0
+  - buildSceneNumber: 2
+    maxTime: 69
+    levelMusic: {fileID: 8300000, guid: d48ab83e9f08441ad8beb4dfbbe13dbc, type: 3}
+    levelSelectButton: {fileID: 0}
+    unlocked: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -11,6 +11,10 @@ GameObject:
   - 223: {fileID: 22325046}
   - 114: {fileID: 11460888}
   - 114: {fileID: 11468970}
+  - 114: {fileID: 11482860}
+  - 114: {fileID: 11414314}
+  - 114: {fileID: 11473740}
+  - 114: {fileID: 11485516}
   m_Layer: 5
   m_Name: UI_Level
   m_TagString: Untagged
@@ -52,7 +56,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &142322
 GameObject:
   m_ObjectHideFlags: 1
@@ -114,13 +118,14 @@ GameObject:
   - 224: {fileID: 22408974}
   - 222: {fileID: 22211052}
   - 114: {fileID: 11408068}
+  - 114: {fileID: 11475200}
   m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &193314
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &11408068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +176,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00:00
+--- !u!114 &11414314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b84113c65353458f85bce83c61dfc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 11408068}
 --- !u!114 &11434234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +343,29 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Level Complete!
+--- !u!114 &11473740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ce07724fd643c582fc68f916bd210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11475200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b84113c65353458f85bce83c61dfc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 0}
 --- !u!114 &11476836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,6 +426,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Restart
+--- !u!114 &11482860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e25a00b0c0e440a9960b237e1cc46f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownText: {fileID: 11437098}
+  countdownBeep: {fileID: 8300000, guid: 76ee6a63778b14e4dae44d7f5c2bf9ab, type: 3}
+  countdownBeepHigh: {fileID: 8300000, guid: 8b308d445717d486296ffa3d8dc89ad0, type: 3}
+--- !u!114 &11485516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9865605f5b134daeb10efdc5d0a373e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finishPanel: {fileID: 106468}
+  finishTimeText: {fileID: 11494626}
 --- !u!114 &11494626
 MonoBehaviour:
   m_ObjectHideFlags: 1

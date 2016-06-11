@@ -5,32 +5,28 @@ public class Pusher : MonoBehaviour {
 
 	public float pushForce = 10f;
 	public float maxDistanceToPlayer = 4;
-	private LevelController level;
+	private GameController gc;
 	private Animator animator;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
 	private AudioSource audio;
 
-	// Use this for initialization
-	void Start () {
+
+	void Awake () {
 		animator = gameObject.GetComponent<Animator> ();
 		playerCar = GameObject.FindGameObjectWithTag ("Player");
 		playerBody = playerCar.GetComponent<Rigidbody> ();
-		level = GameObject.FindGameObjectWithTag ("GameController").GetComponent<LevelController>();
+		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		audio = GetComponent<AudioSource>();
 	}
-
-
+		
 	void Update() {
 		float dist = Vector3.Distance (gameObject.transform.position, playerCar.transform.position);
-		if (dist <= maxDistanceToPlayer && Input.GetKeyDown (KeyCode.Space) && level.raceStarted) {
+		if (dist <= maxDistanceToPlayer && Input.GetKeyDown (KeyCode.Space) && gc.raceStarted) {
 			Push (true);
 		}
-	
 	}
-
-
-
+		
 	void Push(bool isPushing) {
 		animator.SetBool ("isPushing", isPushing);
 		if (isPushing) {			
