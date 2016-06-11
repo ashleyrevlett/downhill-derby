@@ -53,8 +53,6 @@ public class CarController : MonoBehaviour
     public float Revs { get; private set; }
     public float AccelInput { get; private set; }
 
-	private LevelController level;
-
     // Use this for initialization
     private void Start()
     {
@@ -69,8 +67,6 @@ public class CarController : MonoBehaviour
 
         m_Rigidbody = GetComponent<Rigidbody>();
         m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
-
-		level = GameObject.FindGameObjectWithTag ("GameController").GetComponent<LevelController> ();
 
     }
 

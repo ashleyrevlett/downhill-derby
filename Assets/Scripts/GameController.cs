@@ -57,18 +57,17 @@ public class GameController : MonoBehaviour {
 
 	}
 
-
 	// param == normal; not offset by 1
 	public void StartLevel(int levelNumber) {
 
 		if (levelNumber > levels.Length)
 			return;
 
-		StopAllCoroutines ();
-
 		//Hide the main menu UI element
 		inMainMenu = false;
 		showPanels.HideMenu ();
+		showPanels.HidePausePanel ();
+		Time.timeScale = 1f;
 
 		LevelInfo level = levels [levelNumber - 1];
 		Debug.Log ("level.buildSceneNumber: " + level.buildSceneNumber);
@@ -93,6 +92,7 @@ public class GameController : MonoBehaviour {
 		
 	// called when countdown ends, from countdown
 	public void StartRace() {	
+		showAtFinish.HideStats ();
 		raceStarted = true;
 		timer.StartTimer ();
 	}
@@ -102,6 +102,9 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void RestartLevel() {
+		Debug.Log ("RESTARTING!");
+		countdown.StopCountdown ();
+		timer.StopTimer ();
 		StartLevel (currentLevel);
 	}
 

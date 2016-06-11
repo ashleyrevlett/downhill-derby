@@ -8,15 +8,21 @@ public class Timer : MonoBehaviour {
 	public Text timeText;
 	public float timeElapsed { get; set; } // seconds
 
-	void Awake() {
+	void Start() {
+		StopTimer ();
+
+	}
+
+	public void StopTimer() {
+		timeElapsed = 0f;
+		timeText.gameObject.SetActive (false);
 		timerRunning = false;
 	}
 
 	public void StartTimer() {
-		timeText.gameObject.SetActive (true);
-		timeText.enabled = true;
-		timerRunning = true;
 		timeElapsed = 0f;
+		timeText.gameObject.SetActive (true);
+		timerRunning = true;
 	}
 	
 	// Update is called once per frame

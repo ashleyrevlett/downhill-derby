@@ -11,30 +11,38 @@ public class Countdown : MonoBehaviour {
 	private GameController gc;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		countdownAudioSource = gameObject.AddComponent<AudioSource> ();
 		countdownAudioSource.clip = countdownBeep;
+		countdownText.gameObject.SetActive (false);
+	}
+
+	void OnDestroy() {
+		StopCountdown ();
 	}
 
 	public void StartCountdown() {
+		countdownText.gameObject.SetActive (true);
 		StartCoroutine (DoCountdown ());
 	}
 
+	public void StopCountdown() {
+		StopCoroutine ("DoCountdown");
+		countdownText.gameObject.SetActive (false);
+	}
+
 	IEnumerator DoCountdown() {
-		countdownText.gameObject.SetActive (true);
-		yield return new WaitForSeconds (1f);
 		float secondsRemaining = 3f;
-		while (secondsRemaining > 0f) {			
+		while (secondsRemaining > 0f) {	
 			countdownAudioSource.PlayOneShot(countdownAudioSource.clip, 1F);
 			countdownText.text = string.Format ("{0}", secondsRemaining);
-			yield return new WaitForSeconds (1f);
 			secondsRemaining -= 1f;
+			yield return new WaitForSeconds (1f);
 		};
 		countdownAudioSource.PlayOneShot(countdownBeepHigh, 1F);
 		countdownText.gameObject.SetActive (false);
 		gc.StartRace();
 	}
-
 
 }
