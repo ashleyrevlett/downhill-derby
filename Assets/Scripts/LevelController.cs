@@ -40,9 +40,9 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			RestartLevel ();
-		}
+//		if (Input.GetKeyDown (KeyCode.Escape)) {
+//			RestartLevel ();
+//		}
 	}
 
 	public void RestartLevel() {
