@@ -532,7 +532,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -30.174099, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
 --- !u!1 &167524240
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +839,14 @@ Prefab:
       propertyPath: levels.Array.data[1].levelSelectButton
       value: 
       objectReference: {fileID: 626769221}
+    - target: {fileID: 11492404, guid: e0faad876ee744a30bee3f467f5aeb7f, type: 2}
+      propertyPath: currentLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492404, guid: e0faad876ee744a30bee3f467f5aeb7f, type: 2}
+      propertyPath: introMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 7db0c87ec4fdb0e48af04349c4f14df9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0faad876ee744a30bee3f467f5aeb7f, type: 2}
   m_IsPrefabParent: 0
@@ -4005,6 +4013,22 @@ Prefab:
     - target: {fileID: 22419984, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}
       propertyPath: m_SizeDelta.y
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447840, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 130236179}
+    - target: {fileID: 11447840, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447840, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447840, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a6e29ea66c4d4b569ef11e2f6fb6839, type: 2}

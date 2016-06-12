@@ -11,11 +11,12 @@ public class GameController : MonoBehaviour {
 		public float maxTime; // max time for level to be complete before reset
 		public AudioClip levelMusic;
 		public Button levelSelectButton; // from main UI
-		public bool unlocked; // level may be raced
+		public bool unlocked { get; set; } // level may be raced
 		bool complete; // level has been beat
 		float bestTime; // best time so far for level
 	}
 
+	public AudioClip introMusic;
 	public bool inMainMenu { get; set; }
 	public bool raceStarted { get; set; }
 	public GameObject menuUI;
@@ -38,6 +39,7 @@ public class GameController : MonoBehaviour {
 		countdown = levelUI.GetComponent<Countdown> ();
 		timer = levelUI.GetComponent<Timer> ();
 		showAtFinish = levelUI.GetComponent<ShowAtFinish> ();
+		mainAudio.clip = introMusic;
 
 		for (int i = 0; i < levels.Length; i++) {
 
@@ -68,15 +70,19 @@ public class GameController : MonoBehaviour {
 		showPanels.HideMenu ();
 		showPanels.HidePausePanel ();
 		Time.timeScale = 1f;
-
-		LevelInfo level = levels [levelNumber - 1];
-		Debug.Log ("level.buildSceneNumber: " + level.buildSceneNumber);
-		SceneManager.LoadScene ((int)level.buildSceneNumber);
-
 		mainAudio.Stop ();
-		mainAudio.clip = levels [levelNumber - 1].levelMusic;
-		mainAudio.Play ();
 
+		if (levelNumber == 0) {
+			SceneManager.LoadScene ((int)0);
+			mainAudio.clip = introMusic;
+		} else {
+			LevelInfo level = levels [levelNumber - 1];
+			Debug.Log ("level.buildSceneNumber: " + level.buildSceneNumber);
+			SceneManager.LoadScene ((int)level.buildSceneNumber);
+			mainAudio.clip = levels [levelNumber - 1].levelMusic;
+		}
+
+		mainAudio.Play ();
 		currentLevel = levelNumber;
 
 	}
