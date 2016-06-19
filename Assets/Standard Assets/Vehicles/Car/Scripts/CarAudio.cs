@@ -50,25 +50,25 @@ namespace UnityStandardAssets.Vehicles.Car
         private CarController m_CarController; // Reference to car we are controlling
 
 
-//        private void StartSound()
-//        {
-//            // get the carcontroller ( this will not be null as we have require component)
-//            m_CarController = GetComponent<CarController>();
-//
-//            // setup the simple audio source
-//            m_HighAccel = SetUpEngineAudioSource(highAccelClip);
-//
-//            // if we have four channel audio setup the four audio sources
-//            if (engineSoundStyle == EngineAudioOptions.FourChannel)
-//            {
-//                m_LowAccel = SetUpEngineAudioSource(lowAccelClip);
-//                m_LowDecel = SetUpEngineAudioSource(lowDecelClip);
-//                m_HighDecel = SetUpEngineAudioSource(highDecelClip);
-//            }
-//
-//            // flag that we have started the sounds playing
-//            m_StartedSound = true;
-//        }
+        private void StartSound()
+        {
+            // get the carcontroller ( this will not be null as we have require component)
+            m_CarController = GetComponent<CarController>();
+
+            // setup the simple audio source
+            m_HighAccel = SetUpEngineAudioSource(highAccelClip);
+
+            // if we have four channel audio setup the four audio sources
+            if (engineSoundStyle == EngineAudioOptions.FourChannel)
+            {
+                m_LowAccel = SetUpEngineAudioSource(lowAccelClip);
+                m_LowDecel = SetUpEngineAudioSource(lowDecelClip);
+                m_HighDecel = SetUpEngineAudioSource(highDecelClip);
+            }
+
+            // flag that we have started the sounds playing
+            m_StartedSound = true;
+        }
 
 
         private void StopSound()
@@ -96,83 +96,83 @@ namespace UnityStandardAssets.Vehicles.Car
             }
 
             // start the sound if not playing and it is nearer than the maximum distance
-//            if (!m_StartedSound && camDist < maxRolloffDistance*maxRolloffDistance)
-//            {
-//                StartSound();
-//            }
-//
-//            if (m_StartedSound)
-//            {
-//                // The pitch is interpolated between the min and max values, according to the car's revs.
-//                float pitch = ULerp(lowPitchMin, lowPitchMax, m_CarController.Revs);
-//
-//                // clamp to minimum pitch (note, not clamped to max for high revs while burning out)
-//                pitch = Mathf.Min(lowPitchMax, pitch);
-//
-//                if (engineSoundStyle == EngineAudioOptions.Simple)
-//                {
-//                    // for 1 channel engine sound, it's oh so simple:
-//                    m_HighAccel.pitch = pitch*pitchMultiplier*highPitchMultiplier;
-//                    m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-//                    m_HighAccel.volume = 1;
-//                }
-//                else
-//                {
-//                    // for 4 channel engine sound, it's a little more complex:
-//
-//                    // adjust the pitches based on the multipliers
-//                    m_LowAccel.pitch = pitch*pitchMultiplier;
-//                    m_LowDecel.pitch = pitch*pitchMultiplier;
-//                    m_HighAccel.pitch = pitch*highPitchMultiplier*pitchMultiplier;
-//                    m_HighDecel.pitch = pitch*highPitchMultiplier*pitchMultiplier;
-//
-//                    // get values for fading the sounds based on the acceleration
-//                    float accFade = Mathf.Abs(m_CarController.AccelInput);
-//                    float decFade = 1 - accFade;
-//
-//                    // get the high fade value based on the cars revs
-//                    float highFade = Mathf.InverseLerp(0.2f, 0.8f, m_CarController.Revs);
-//                    float lowFade = 1 - highFade;
-//
-//                    // adjust the values to be more realistic
-//                    highFade = 1 - ((1 - highFade)*(1 - highFade));
-//                    lowFade = 1 - ((1 - lowFade)*(1 - lowFade));
-//                    accFade = 1 - ((1 - accFade)*(1 - accFade));
-//                    decFade = 1 - ((1 - decFade)*(1 - decFade));
-//
-//                    // adjust the source volumes based on the fade values
-//                    m_LowAccel.volume = lowFade*accFade;
-//                    m_LowDecel.volume = lowFade*decFade;
-//                    m_HighAccel.volume = highFade*accFade;
-//                    m_HighDecel.volume = highFade*decFade;
-//
-//                    // adjust the doppler levels
-//                    m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-//                    m_LowAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-//                    m_HighDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-//                    m_LowDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
-//                }
-//            }
+            if (!m_StartedSound && camDist < maxRolloffDistance*maxRolloffDistance)
+            {
+                StartSound();
+            }
+
+            if (m_StartedSound)
+            {
+                // The pitch is interpolated between the min and max values, according to the car's revs.
+                float pitch = ULerp(lowPitchMin, lowPitchMax, m_CarController.Revs);
+
+                // clamp to minimum pitch (note, not clamped to max for high revs while burning out)
+                pitch = Mathf.Min(lowPitchMax, pitch);
+
+                if (engineSoundStyle == EngineAudioOptions.Simple)
+                {
+                    // for 1 channel engine sound, it's oh so simple:
+                    m_HighAccel.pitch = pitch*pitchMultiplier*highPitchMultiplier;
+                    m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
+                    m_HighAccel.volume = 1;
+                }
+                else
+                {
+                    // for 4 channel engine sound, it's a little more complex:
+
+                    // adjust the pitches based on the multipliers
+                    m_LowAccel.pitch = pitch*pitchMultiplier;
+                    m_LowDecel.pitch = pitch*pitchMultiplier;
+                    m_HighAccel.pitch = pitch*highPitchMultiplier*pitchMultiplier;
+                    m_HighDecel.pitch = pitch*highPitchMultiplier*pitchMultiplier;
+
+                    // get values for fading the sounds based on the acceleration
+                    float accFade = Mathf.Abs(m_CarController.AccelInput);
+                    float decFade = 1 - accFade;
+
+                    // get the high fade value based on the cars revs
+                    float highFade = Mathf.InverseLerp(0.2f, 0.8f, m_CarController.Revs);
+                    float lowFade = 1 - highFade;
+
+                    // adjust the values to be more realistic
+                    highFade = 1 - ((1 - highFade)*(1 - highFade));
+                    lowFade = 1 - ((1 - lowFade)*(1 - lowFade));
+                    accFade = 1 - ((1 - accFade)*(1 - accFade));
+                    decFade = 1 - ((1 - decFade)*(1 - decFade));
+
+                    // adjust the source volumes based on the fade values
+                    m_LowAccel.volume = lowFade*accFade;
+                    m_LowDecel.volume = lowFade*decFade;
+                    m_HighAccel.volume = highFade*accFade;
+                    m_HighDecel.volume = highFade*decFade;
+
+                    // adjust the doppler levels
+                    m_HighAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
+                    m_LowAccel.dopplerLevel = useDoppler ? dopplerLevel : 0;
+                    m_HighDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
+                    m_LowDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
+                }
+            }
         }
 
 
-//        // sets up and adds new audio source to the gane object
-//        private AudioSource SetUpEngineAudioSource(AudioClip clip)
-//        {
-//            // create the new audio source component on the game object and set up its properties
-//            AudioSource source = gameObject.AddComponent<AudioSource>();
-//            source.clip = clip;
-//            source.volume = 0;
-//            source.loop = true;
-//
-//            // start the clip from a random point
-//            source.time = Random.Range(0f, clip.length);
-//            source.Play();
-//            source.minDistance = 5;
-//            source.maxDistance = maxRolloffDistance;
-//            source.dopplerLevel = 0;
-//            return source;
-//        }
+        // sets up and adds new audio source to the gane object
+        private AudioSource SetUpEngineAudioSource(AudioClip clip)
+        {
+            // create the new audio source component on the game object and set up its properties
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.volume = 0;
+            source.loop = true;
+
+            // start the clip from a random point
+            source.time = Random.Range(0f, clip.length);
+            source.Play();
+            source.minDistance = 5;
+            source.maxDistance = maxRolloffDistance;
+            source.dopplerLevel = 0;
+            return source;
+        }
 
 
         // unclamped versions of Lerp and Inverse Lerp, to allow value to exceed the from-to range
