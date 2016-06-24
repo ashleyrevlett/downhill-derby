@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pusher
   - PowerUp
+  - LevelController
   layers:
   - Default
   - TransparentFX

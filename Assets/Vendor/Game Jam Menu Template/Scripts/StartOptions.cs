@@ -80,7 +80,7 @@ public class StartOptions : MonoBehaviour {
 		inMainMenu = false;
 
 		//Hide the main menu UI element
-		showPanels.HideMenu ();
+		showPanels.HidePanel("MenuPanel");
 
 		//Load the selected scene, by scene index number in build settings
 		SceneManager.LoadScene (sceneToStart);
@@ -89,7 +89,7 @@ public class StartOptions : MonoBehaviour {
 	public void HideDelayed()
 	{
 		//Hide the main menu UI element after fading out menu for start game in scene
-		showPanels.HideMenu();
+		showPanels.ShowPanel("MenuPanel");
 	}
 
 	public void StartGameInScene()

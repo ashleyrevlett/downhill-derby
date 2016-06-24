@@ -3,50 +3,37 @@ using System.Collections;
 
 public class ShowPanels : MonoBehaviour {
 
-	public GameObject optionsPanel;							//Store a reference to the Game Object OptionsPanel 
-	public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
-	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
-	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel 
 
+	[System.Serializable]
+	public struct PanelInfo {
+		public GameObject panelObject;
+		public GameObject panelTint;
+	}
+		
+	public PanelInfo[] panels;
 
-	//Call this function to activate and display the Options panel during the main menu
-	public void ShowOptionsPanel()
-	{
-		optionsPanel.SetActive(true);
-		optionsTint.SetActive(true);
+	private PanelInfo GetPanel(string panelName) {
+		foreach (PanelInfo panel in panels) {
+			if (panel.panelObject.name == panelName) {
+				return panel;
+			}
+		}
+		PanelInfo p = new PanelInfo ();
+		p.panelObject = null;
+		p.panelTint = null;
+		return p;
 	}
 
-	//Call this function to deactivate and hide the Options panel during the main menu
-	public void HideOptionsPanel()
-	{
-		optionsPanel.SetActive(false);
-		optionsTint.SetActive(false);
+	public void ShowPanel(string thePanel) {
+		PanelInfo panel = GetPanel (thePanel);
+		if (panel.panelObject != null) panel.panelObject.SetActive (true);
+		if (panel.panelTint != null) panel.panelTint.SetActive (true);
 	}
 
-	//Call this function to activate and display the main menu panel during the main menu
-	public void ShowMenu()
-	{
-		menuPanel.SetActive (true);
+	public void HidePanel(string thePanel) {
+		PanelInfo panel = GetPanel (thePanel);
+		if (panel.panelObject != null) panel.panelObject.SetActive (false);
+		if (panel.panelTint != null) panel.panelTint.SetActive (false);
 	}
 
-	//Call this function to deactivate and hide the main menu panel during the main menu
-	public void HideMenu()
-	{
-		menuPanel.SetActive (false);
-	}
-	
-	//Call this function to activate and display the Pause panel during game play
-	public void ShowPausePanel()
-	{
-		pausePanel.SetActive (true);
-		optionsTint.SetActive(true);
-	}
-
-	//Call this function to deactivate and hide the Pause panel during game play
-	public void HidePausePanel()
-	{
-		pausePanel.SetActive (false);
-		optionsTint.SetActive(false);
-
-	}
 }

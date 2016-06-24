@@ -5,23 +5,23 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	public bool timerRunning { get; set; }
-	public Text timeText;
 	public float timeElapsed { get; set; } // seconds
 
 	void Start() {
 		StopTimer ();
+	}
 
+	public void ResetTimer() {
+		timeElapsed = 0f;
 	}
 
 	public void StopTimer() {
-		timeElapsed = 0f;
-		timeText.gameObject.SetActive (false);
+		Debug.Log ("Stopping timer");
 		timerRunning = false;
 	}
 
 	public void StartTimer() {
 		timeElapsed = 0f;
-		timeText.gameObject.SetActive (true);
 		timerRunning = true;
 	}
 	
@@ -29,7 +29,6 @@ public class Timer : MonoBehaviour {
 	void Update () {
 		if (timerRunning) {
 			timeElapsed += Time.deltaTime;
-			timeText.text = string.Format ("{0:0}:{1:00}", Mathf.Floor (timeElapsed / 60), timeElapsed % 60);
 		}
 	}
 		

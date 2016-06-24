@@ -117,6 +117,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 2800000, guid: 54323ed7408a65e49bef4572f9bb6e3b, type: 3}
@@ -134,13 +141,6 @@ Material:
           name: _SpecMap
         second:
           m_Texture: {fileID: 2800000, guid: f41aa5e131cccc4499964810edf34ca5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -882,6 +882,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2315666, guid: fa77479d6a2d64ea38e7694070fb1ea6, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463878, guid: fa77479d6a2d64ea38e7694070fb1ea6, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 173.6553
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315666, guid: fa77479d6a2d64ea38e7694070fb1ea6, type: 2}
+      propertyPath: m_UseLightProbes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315666, guid: fa77479d6a2d64ea38e7694070fb1ea6, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa77479d6a2d64ea38e7694070fb1ea6, type: 2}
   m_IsPrefabParent: 0
@@ -1010,6 +1026,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 2800000, guid: 54323ed7408a65e49bef4572f9bb6e3b, type: 3}
@@ -1027,13 +1050,6 @@ Material:
           name: _SpecMap
         second:
           m_Texture: {fileID: 2800000, guid: f41aa5e131cccc4499964810edf34ca5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -3614,6 +3630,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 2800000, guid: 54323ed7408a65e49bef4572f9bb6e3b, type: 3}
@@ -3631,13 +3654,6 @@ Material:
           name: _SpecMap
         second:
           m_Texture: {fileID: 2800000, guid: f41aa5e131cccc4499964810edf34ca5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -3763,6 +3779,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 2800000, guid: 54323ed7408a65e49bef4572f9bb6e3b, type: 3}
@@ -3780,13 +3803,6 @@ Material:
           name: _SpecMap
         second:
           m_Texture: {fileID: 2800000, guid: f41aa5e131cccc4499964810edf34ca5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -4303,6 +4319,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 2800000, guid: 54323ed7408a65e49bef4572f9bb6e3b, type: 3}
@@ -4320,13 +4343,6 @@ Material:
           name: _SpecMap
         second:
           m_Texture: {fileID: 2800000, guid: f41aa5e131cccc4499964810edf34ca5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
