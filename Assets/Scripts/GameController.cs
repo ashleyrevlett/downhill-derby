@@ -9,69 +9,41 @@ public class GameController : MonoBehaviour {
 	public struct LevelInfo {
 		public int buildSceneNumber; // scene number from build settings
 		public float maxTime; // max time for level to be complete before reset
-		public AudioClip levelMusic;
-		public Button levelSelectButton; // from main UI
 		public bool unlocked { get; set; } // level may be raced
 		bool complete; // level has been beat
 		float bestTime; // best time so far for level
 	}
 
-	public GameObject levelControllerObject;
 	LevelController lc;
-	public AudioClip introMusic;
 	public bool inMainMenu { get; set; }
 	public bool raceStarted { get; set; }
-	public GameObject menuUI;
 	private ShowPanels showPanels;
 	private Pause pause;
 	public int currentLevel = 0; // offset by 1 like array
-	private int farthestLevelReached = 1; // how far the player has progresssed
+	public int farthestLevelReached = 1; // how far the player has progresssed
 	public LevelInfo[] levels;
-	AudioSource mainAudio;
 	FadeScene fader;
 
 	// start from title scene only
 	void Start () {
-		showPanels = menuUI.GetComponent<ShowPanels> ();
-		fader = menuUI.GetComponent<FadeScene> ();
-		pause = menuUI.GetComponent<Pause> ();
-		mainAudio = gameObject.GetComponent<AudioSource> ();
-		lc = levelControllerObject.GetComponent<LevelController> ();
+		showPanels = gameObject.GetComponent<ShowPanels> ();
+		fader = gameObject.GetComponent<FadeScene> ();
+		pause = gameObject.GetComponent<Pause> ();
 		ShowMenuScene ();
 	}
 
 	// returning to title scene from level pause or finish
-	private void ShowMenuScene() {
+	public void ShowMenuScene() {
 
 		currentLevel = 0;
 
-		// if not in menu scene yet, load it
+		// if not in menu scene yet, load it; may be returning to menu from race
 		Scene currentScene = SceneManager.GetActiveScene();
 		if (currentScene.buildIndex != 0)
 			SceneManager.LoadScene (0);
 
 		pause.UnPause(); // may enter from pause, so unpause just in case
 		showPanels.ShowPanel("MenuPanel"); // in case we are starting from level with disabled menu
-
-		// disable level controller during menu scene
-		lc.enabled = false;
-
-		// setup music
-		mainAudio.Stop ();
-		mainAudio.clip = introMusic;
-		mainAudio.Play ();
-
-		// init menu level buttons
-		for (int i = 0; i < levels.Length; i++) {
-			Button levelButton = levels [i].levelSelectButton;
-			if (farthestLevelReached >= i ) {
-				levelButton.interactable = true;
-				levels [i].unlocked = true;
-			} else {
-				levelButton.interactable = false;
-				levels [i].unlocked = false;
-			}
-		}
 
 	}
 
@@ -102,17 +74,31 @@ public class GameController : MonoBehaviour {
 
 		SceneManager.LoadScene (level.buildSceneNumber);
 
-		lc.enabled = true;
-		lc.DoCountdown ();
+	}
 
-		mainAudio.Stop (); // in case we are restarting
-		mainAudio.clip = levels [level.buildSceneNumber - 1].levelMusic;
-		mainAudio.Play ();
+
+	void OnLevelWasLoaded(int level) {
+		if (level != 0) {
+			lc = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController> ();
+			lc.DoCountdown ();
+		}
+
 	}
 		
 
 	public void RestartLevel() {
 		StartLevel (currentLevel);
 	}
+
+	public void NextLevel() {
+		if (currentLevel + 1 <= levels.Length) {
+			farthestLevelReached++;
+			StartLevel (currentLevel + 1);
+		} else {
+			Debug.Log ("Last level complete!");
+			// TODO game winning scene
+		}
+	}
+
 
 }
