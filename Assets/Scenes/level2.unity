@@ -9634,22 +9634,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 439594, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 93.2428
-      objectReference: {fileID: 0}
-    - target: {fileID: 11460884, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
-      propertyPath: pushForce
-      value: 1200
-      objectReference: {fileID: 0}
-    - target: {fileID: 11460884, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
-      propertyPath: maxDistanceToPlayer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 127964, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
   m_IsPrefabParent: 0

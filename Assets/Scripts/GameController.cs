@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
 		public int buildSceneNumber; // scene number from build settings
 		public float maxTime; // max time for level to be complete before reset
 		public bool unlocked { get; set; } // level may be raced
-		bool complete; // level has been beat
+		public bool complete; // level has been beat
 		float bestTime; // best time so far for level
 	}
 
@@ -47,6 +47,9 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	public bool isLevelComplete (int level) {
+		return levels [level - 1].complete;
+	}
 
 	// param == normal; not offset by 1
 	public void StartLevel(int levelNumber) {
@@ -89,6 +92,7 @@ public class GameController : MonoBehaviour {
 	public void RestartLevel() {
 		StartLevel (currentLevel);
 	}
+
 
 	public void NextLevel() {
 		if (currentLevel + 1 <= levels.Length) {

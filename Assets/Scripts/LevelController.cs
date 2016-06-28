@@ -10,11 +10,13 @@ public class LevelController : MonoBehaviour {
 	private GameObject startingLine;
 	private GameObject finishLine;
 
-	private GameController gc;
 	public GameObject levelUI;
+	private GameController gc;
 	private Countdown countdown;
 	private Timer timer;
 	private ShowPanels showPanels;
+	private Rigidbody carBody;
+	private HighScores scores;
 
 	void Awake() {
 
@@ -23,17 +25,24 @@ public class LevelController : MonoBehaviour {
 			gcObject =   Instantiate (Resources.Load ("GameController")) as GameObject;
 			gc = gcObject.GetComponent<GameController> ();
 
+		scores = gcObject.GetComponent<HighScores> ();
+
 		countdown = GameObject.Find ("CountdownText").GetComponent<Countdown>();
 
 		timer = gameObject.GetComponent<Timer> ();
 		showPanels = gameObject.GetComponent<ShowPanels> ();
+
+		carBody = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody>();
+
 	}
 		
 	void OnDisable() {
 		EndLevel ();
 	}
 		
+	// called at init of each race
 	public void DoCountdown() {
+		carBody.isKinematic = true; // can't go until countdown ends!
 		countdown.enabled = true;
 		showPanels.HidePanel ("FinishPanel");
 		timer.StopTimer (); // don't show timer while doing countdown
@@ -41,6 +50,7 @@ public class LevelController : MonoBehaviour {
 
 	// called by countdown when it's finished
 	public void StartRace() {	
+		carBody.isKinematic = false;
 		timer.StartTimer ();
 	}
 		
@@ -48,6 +58,10 @@ public class LevelController : MonoBehaviour {
 	public void EndRace() {
 		showPanels.ShowPanel ("FinishPanel");
 		timer.StopTimer ();
+
+		// update high scores
+		scores.SetHighScore (gc.currentLevel, timer.timeElapsed);
+		
 	}
 
 	public void EndLevel() {
