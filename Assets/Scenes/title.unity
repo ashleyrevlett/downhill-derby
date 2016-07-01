@@ -392,17 +392,13 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 110
       objectReference: {fileID: 0}
-    - target: {fileID: 11432566, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
-      propertyPath: fileName
-      value: playerInfo2.dat
-      objectReference: {fileID: 0}
-    - target: {fileID: 11432566, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
-      propertyPath: highscore_level1
+    - target: {fileID: 11407702, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
+      propertyPath: startFromMenu
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11432566, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
-      propertyPath: highscore_level2
-      value: 0
+    - target: {fileID: 11407702, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
+      propertyPath: currentLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89555604ec6f44d64839f703ec018d99, type: 2}

@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 		float bestTime; // best time so far for level
 	}
 
+	public bool startFromMenu = true; // so we can run the scene from a level for testing
+
 	LevelController lc;
 	public bool inMainMenu { get; set; }
 	public bool raceStarted { get; set; }
@@ -29,7 +31,17 @@ public class GameController : MonoBehaviour {
 		showPanels = gameObject.GetComponent<ShowPanels> ();
 		fader = gameObject.GetComponent<FadeScene> ();
 		pause = gameObject.GetComponent<Pause> ();
-		ShowMenuScene ();
+
+		// in case we forget to change this in inspector
+		if (currentLevel <= farthestLevelReached)
+			farthestLevelReached = currentLevel + 1;
+
+		if (startFromMenu || currentLevel == 0) {
+			ShowMenuScene ();
+		} else {
+			StartLevel (currentLevel);
+		}
+
 	}
 
 	// returning to title scene from level pause or finish

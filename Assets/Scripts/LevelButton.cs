@@ -10,13 +10,10 @@ public class LevelButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		levelButton = gameObject.GetComponent<Button>();
 		levelButton.onClick.AddListener(() => gc.StartLevel(level));
-
-		if (gc.currentLevel == 0)
-			SetButtonState ();
+		SetButtonState ();
 	}
 
 	void OnLevelWasLoaded(int level) {
@@ -29,6 +26,9 @@ public class LevelButton : MonoBehaviour {
 			gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		if (levelButton == null)
 			levelButton = gameObject.GetComponent<Button>();
+
+		Debug.Log ("gc.farthestLevelReached: " + gc.farthestLevelReached);
+		Debug.Log ("gc.level: " + level);
 
 		if (gc.farthestLevelReached >= level)
 			levelButton.interactable = true;

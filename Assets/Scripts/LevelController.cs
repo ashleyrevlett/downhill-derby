@@ -22,8 +22,9 @@ public class LevelController : MonoBehaviour {
 
 		GameObject gcObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gcObject == null) 
-			gcObject =   Instantiate (Resources.Load ("GameController")) as GameObject;
-			gc = gcObject.GetComponent<GameController> ();
+			gcObject = Instantiate (Resources.Load ("GameController")) as GameObject;
+
+		gc = gcObject.GetComponent<GameController> ();
 
 		scores = gcObject.GetComponent<HighScores> ();
 

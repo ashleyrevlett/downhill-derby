@@ -684,6 +684,7 @@ GameObject:
   - 114: {fileID: 11426478}
   - 82: {fileID: 8248194}
   - 114: {fileID: 11432566}
+  - 114: {fileID: 11457240}
   m_Layer: 5
   m_Name: GameController
   m_TagString: GameController
@@ -1206,13 +1207,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99a46f2ff0704fdebaf3490451394cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  startFromMenu: 0
+  currentLevel: 1
   farthestLevelReached: 1
   levels:
+  - buildSceneNumber: 3
+    maxTime: 60
+    complete: 0
   - buildSceneNumber: 1
     maxTime: 60
-  - buildSceneNumber: 2
-    maxTime: 60
+    complete: 0
 --- !u!114 &11408074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2161,6 +2165,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11457240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c155d172fdbdea64fbb8a94757a40178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11458018
 MonoBehaviour:
   m_ObjectHideFlags: 1
