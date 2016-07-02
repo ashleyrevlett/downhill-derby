@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour {
 	void OnLevelWasLoaded(int level) {
 		if (level != 0) {
 			lc = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController> ();
-			lc.DoCountdown ();
+			lc.StartLevel ();
 		}
 
 	}

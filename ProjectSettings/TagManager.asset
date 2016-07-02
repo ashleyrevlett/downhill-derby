@@ -7,6 +7,8 @@ TagManager:
   - Pusher
   - PowerUp
   - LevelController
+  - Checkpoint
+  - Waypoint
   layers:
   - Default
   - TransparentFX

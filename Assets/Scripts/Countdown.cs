@@ -20,11 +20,13 @@ public class Countdown : MonoBehaviour {
 	void OnEnable() {
 		countdownText.gameObject.SetActive (true); // hide text until countdown begins
 		StartCoroutine (DoCountdown ());
+		Debug.Log ("Countdown Enabled");
 	}
 
 	void OnDisable() {
 		countdownText.gameObject.SetActive (false);
-//		StopAllCoroutines ();
+		StopAllCoroutines ();
+		Debug.Log ("Countdown DISabled");
 	}
 		
 	IEnumerator DoCountdown() {

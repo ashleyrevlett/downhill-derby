@@ -12,4 +12,19 @@ public class OffCourseCorrection : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter(Collision collisionInfo) {
+		print("Collision with " + collisionInfo.transform.name);
+	}
+
+
+	void OnCollisionStay(Collision collisionInfo) {
+		print("Staying in collision with " + collisionInfo.transform.name);
+	}
+		
+	void OnCollisionExit(Collision collisionInfo) {
+		print("No longer in contact with " + collisionInfo.transform.name);
+	}
+
+
 }
