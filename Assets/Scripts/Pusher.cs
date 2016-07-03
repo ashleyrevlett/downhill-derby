@@ -5,12 +5,15 @@ public class Pusher : MonoBehaviour {
 
 	public float pushForce = 10f;
 	public float maxDistanceToPlayer = 4;
+	public float maxDistanceToAnimate = 1f;
 	private Animator animator;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
 	private AudioSource audio;
 	private PushMeter meter;
 	private LevelController lc;
+	private bool canPush = true;
+
 
 	void Awake () {
 		animator = gameObject.GetComponent<Animator> ();
@@ -22,22 +25,31 @@ public class Pusher : MonoBehaviour {
 	}
 		
 	void Update() {
+		
+		if (!canPush)
+			return;
+		
 		float dist = Vector3.Distance (gameObject.transform.position, playerCar.transform.position);
-		if (dist <= maxDistanceToPlayer && Input.GetKeyDown (KeyCode.Space) && lc.raceStarted) {
-			Push (true);
-		}
+
+		if (Input.GetKeyDown (KeyCode.Space) && lc.raceStarted) 
+			Push ();
+		
+		if (dist > maxDistanceToAnimate) 
+			animator.SetBool ("isPushing", false);
+		
+		if (dist > maxDistanceToPlayer)
+			canPush = false;
+
 	}
 
-	void Push(bool isPushing) {
-		animator.SetBool ("isPushing", isPushing);
-		if (isPushing) {			
-			audio.PlayOneShot(audio.clip, 0.7F);
-			Vector3 force = playerCar.transform.forward * pushForce;
-			Debug.DrawLine(playerCar.transform.position, playerCar.transform.position + playerCar.transform.forward, Color.blue, 5f);
-			playerBody.AddForce(force, ForceMode.Impulse);
-//			Debug.Log ("force: " + force);	
-			meter.GoUp();
-		}
+	public void Push() {
+		StopAllCoroutines ();
+		animator.SetBool ("isPushing", true);					
+		audio.PlayOneShot(audio.clip, 0.7F);
+		Vector3 force = playerCar.transform.forward * pushForce;
+		playerBody.AddForce(force, ForceMode.Impulse);
+		meter.GoUp();
 	}
+
 
 }
