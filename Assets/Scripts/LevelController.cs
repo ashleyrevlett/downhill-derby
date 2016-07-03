@@ -17,7 +17,6 @@ public class LevelController : MonoBehaviour {
 	private Rigidbody carBody;
 	private HighScores scores;
 
-	public bool hasSeenHint = false;
 	public bool raceStarted = false;
 
 	void Awake() {
@@ -51,17 +50,12 @@ public class LevelController : MonoBehaviour {
 		showPanels.HidePanel ("FinishPanel");
 		raceStarted = false;
 
-		if (!hasSeenHint) {
-			showPanels.ShowPanel ("HintPanel");
-		} else {
-			DoCountdown ();
-		}
+		DoCountdown ();
+
 
 	}
 		
 	public void DoCountdown() {
-		hasSeenHint = true;
-		showPanels.HidePanel ("HintPanel");
 		countdown.gameObject.SetActive (true);
 		countdown.enabled = true;
 		Debug.Log ("LC doing countdown");
