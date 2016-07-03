@@ -95,4 +95,8 @@ public class LevelController : MonoBehaviour {
 		gc.NextLevel ();
 	}
 
+	public void ReturnToMenu() {
+		gc.ShowMenuScene ();
+	}
+
 }

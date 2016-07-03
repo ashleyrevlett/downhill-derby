@@ -45,10 +45,12 @@ public class Countdown : MonoBehaviour {
 				pusher.Push ();
 			
 		};
-		yield return new WaitForSeconds (1f); // give the camera time to move to position
+		yield return new WaitForSeconds (1f); 
 		countdownAudioSource.PlayOneShot (countdownBeepHigh, 1F);
-		countdownText.gameObject.SetActive (false);
 		lc.StartRace ();
+		yield return new WaitForSeconds (1f); // wait for beep to end
+		countdownText.gameObject.SetActive (false);
+
 	}
 
 }

@@ -109,7 +109,6 @@ public class CarController : MonoBehaviour
         m_WheelColliders[0].steerAngle = m_SteerAngle;
         m_WheelColliders[1].steerAngle = m_SteerAngle;
 
-//            SteerHelper();
         ApplyDrive(accel, footbrake);
 //            CapSpeed();
 

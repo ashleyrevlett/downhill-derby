@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 using System.Collections;
+
 
 public class PowerUp : MonoBehaviour {
 
-	public float forwardForce = 1500f;
+	private float forwardForce = 3500f;
+	private float blurTimeToEnd = 2f;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
 	private AudioSource audio;
 	private bool isColliding = false;
 	private MeshRenderer mesh;
+	private VignetteAndChromaticAberration vignette;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +21,8 @@ public class PowerUp : MonoBehaviour {
 		playerBody = playerCar.GetComponent<Rigidbody>();
 		mesh = gameObject.GetComponent<MeshRenderer> ();
 		audio = GetComponent<AudioSource>();
-
+		vignette = Camera.main.GetComponent<VignetteAndChromaticAberration> ();
+		Debug.Log ("vignette: " + vignette);
 	}
 	
 	// Update is called once per frame
@@ -36,18 +42,43 @@ public class PowerUp : MonoBehaviour {
 			return;
 		
 		if (other.gameObject.name == "ColliderBody" || other.gameObject.name == "ColliderBottom" || other.gameObject.name == "ColliderFront") {
+			StopAllCoroutines ();
 			isColliding = true;
 			Debug.Log ("POWERUP");
 			audio.PlayOneShot(audio.clip, 0.7F);
 			Vector3 force = playerCar.transform.forward * forwardForce;
 			playerBody.AddForce(force, ForceMode.Impulse);
+			StartCoroutine (BlurScreen ());
 			StartCoroutine (Disappear ());
 		}
 	}
 
+	IEnumerator BlurScreen() {
+
+		float timeElapsed = 0f;
+		float maxBlur = .7f;
+		vignette.blur = maxBlur;
+
+		while (timeElapsed < blurTimeToEnd) {
+			float percentComplete = timeElapsed / blurTimeToEnd;
+			float newBlur = Mathf.Lerp (maxBlur, 0f, percentComplete);
+			vignette.blur = newBlur;
+			timeElapsed += Time.deltaTime;
+
+			Debug.Log ("timeElapsed: " + timeElapsed);
+			Debug.Log ("percentComplete: " + percentComplete);
+			Debug.Log ("newBlur: " + newBlur);
+
+			yield return null;
+		}
+
+		vignette.blur = 0f;
+
+	}
+
 	IEnumerator Disappear() {
 		mesh.enabled = false;
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds (blurTimeToEnd);
 		gameObject.SetActive (false);
 	}
 

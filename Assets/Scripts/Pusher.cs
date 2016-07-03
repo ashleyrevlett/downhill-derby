@@ -3,9 +3,15 @@ using System.Collections;
 
 public class Pusher : MonoBehaviour {
 
+	[SerializeField]
 	public float pushForce = 10f;
+
+	[SerializeField]
 	public float maxDistanceToPlayer = 4;
+
+	[SerializeField]
 	public float maxDistanceToAnimate = 1f;
+
 	private Animator animator;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
