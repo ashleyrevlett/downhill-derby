@@ -87,6 +87,7 @@ public class CarController : MonoBehaviour
 
     public void Move(float steering, float accel, float footbrake, float handbrake)
     {
+		Debug.Log ("MOVING!");
         for (int i = 0; i < 4; i++)
         {
             Quaternion quat;

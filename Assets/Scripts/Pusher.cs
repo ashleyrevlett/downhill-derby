@@ -9,6 +9,7 @@ public class Pusher : MonoBehaviour {
 	private Animator animator;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
+	private CarController car;
 	private AudioSource audio;
 	private PushMeter meter;
 	private LevelController lc;
@@ -19,6 +20,7 @@ public class Pusher : MonoBehaviour {
 		animator = gameObject.GetComponent<Animator> ();
 		playerCar = GameObject.FindGameObjectWithTag ("Player");
 		playerBody = playerCar.GetComponent<Rigidbody> ();
+		car = playerCar.GetComponent<CarController> ();
 		audio = GetComponent<AudioSource>();
 		meter = GameObject.FindGameObjectWithTag ("LevelController").GetComponent<PushMeter> ();
 		lc = GameObject.FindGameObjectWithTag ("LevelController").GetComponent<LevelController> ();
@@ -48,6 +50,8 @@ public class Pusher : MonoBehaviour {
 		audio.PlayOneShot(audio.clip, 0.7F);
 		Vector3 force = playerCar.transform.forward * pushForce;
 		playerBody.AddForce(force, ForceMode.Impulse);
+//		car.Move (0f, pushForce, 0f, 0f);
+
 		meter.GoUp();
 	}
 
