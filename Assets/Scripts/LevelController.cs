@@ -10,12 +10,13 @@ public class LevelController : MonoBehaviour {
 	private GameObject finishLine;
 
 	public GameObject levelUI;
-	private GameController gc;
-	private Countdown countdown;
-	private Timer timer;
-	private ShowPanels showPanels;
-	private Rigidbody carBody;
-	private HighScores scores;
+	GameController gc;
+	Countdown countdown;
+	Timer timer;
+	ShowPanels showPanels;
+	Rigidbody carBody;
+	HighScores scores;
+	Recorder recorder;
 
 	public bool raceStarted = false;
 
@@ -26,6 +27,8 @@ public class LevelController : MonoBehaviour {
 			gcObject = Instantiate (Resources.Load ("GameController")) as GameObject;
 
 		gc = gcObject.GetComponent<GameController> ();
+
+		recorder = GetComponent<Recorder>();
 
 		scores = gcObject.GetComponent<HighScores> ();
 
@@ -65,6 +68,8 @@ public class LevelController : MonoBehaviour {
 	public void StartRace() {	
 		carBody.isKinematic = false;
 		timer.StartTimer ();
+		recorder.StartRecording ();
+		recorder.PlayRecording ();
 		raceStarted = true;
 	}
 		
@@ -75,7 +80,16 @@ public class LevelController : MonoBehaviour {
 
 		// update high scores
 		scores.SetHighScore (gc.currentLevel, timer.timeElapsed);
-		
+
+		// save ghost
+		print("timer.timeElapsed: " + timer.timeElapsed);
+		print("scores.highscore_level1: " + scores.highscore_level1);
+		if (timer.timeElapsed <= scores.highscore_level1) {
+			print ("saving recording for level: " + gc.GetCurrentLevelName ());
+			recorder.SaveRecording (gc.GetCurrentLevelName (), timer.timeElapsed);
+		} else {
+			print ("not saving recording, didn't beat high score");
+		}
 	}
 
 	public void EndLevel() {

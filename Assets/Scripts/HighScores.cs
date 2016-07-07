@@ -7,8 +7,8 @@ using System.IO;
 public class HighScores : MonoBehaviour {
 
 	public string fileName = "playerInfo.dat";
-	public float highscore_level1 = 0f; // really this is best time, not high score; if it's 0, it hasn't been set yet; TODO fix that hack
-	public float highscore_level2 = 0f;
+	public float highscore_level1 = 999f; // really this is best time, not high score; if it's 0, it hasn't been set yet; TODO fix that hack
+	public float highscore_level2 = 999f;
 
 	void OnEnable() {
 		Load ();
@@ -27,10 +27,12 @@ public class HighScores : MonoBehaviour {
 	}
 		
 	public void SetHighScore(int level, float timeElapsed) {
-		if (level == 1)
+		if (level == 1 && timeElapsed <= highscore_level1) {
 			highscore_level1 = timeElapsed;
-		if (level == 2)
+
+		} if (level == 2 && timeElapsed <= highscore_level2) {
 			highscore_level2 = timeElapsed;
+		}
 	}
 
 	public void Save() {

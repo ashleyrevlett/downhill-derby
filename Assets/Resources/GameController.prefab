@@ -2568,10 +2568,12 @@ MonoBehaviour:
   currentLevel: 1
   farthestLevelReached: 1
   levels:
-  - buildSceneNumber: 3
+  - levelName: GoodLevel
+    buildSceneNumber: 3
     maxTime: 60
     complete: 0
-  - buildSceneNumber: 1
+  - levelName: TestLevel
+    buildSceneNumber: 1
     maxTime: 60
     complete: 0
 --- !u!114 &11457410
@@ -2645,7 +2647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6a0b8838fb04cf3a3edb77a1264621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: playerInfo.dat
+  fileName: playerInfo4.dat
   highscore_level1: 30
   highscore_level2: 99
 --- !u!114 &11460250

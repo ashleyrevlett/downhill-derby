@@ -21,7 +21,7 @@ public class PowerUp : MonoBehaviour {
 		playerBody = playerCar.GetComponent<Rigidbody>();
 		mesh = gameObject.GetComponent<MeshRenderer> ();
 		audio = GetComponent<AudioSource>();
-		vignette = Camera.main.GetComponent<VignetteAndChromaticAberration> ();
+		vignette = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VignetteAndChromaticAberration> ();
 		Debug.Log ("vignette: " + vignette);
 	}
 	
@@ -57,7 +57,8 @@ public class PowerUp : MonoBehaviour {
 
 		float timeElapsed = 0f;
 		float maxBlur = .7f;
-		vignette.blur = maxBlur;
+		if (vignette != null)			
+			vignette.blur = maxBlur;
 
 		while (timeElapsed < blurTimeToEnd) {
 			float percentComplete = timeElapsed / blurTimeToEnd;
@@ -72,7 +73,8 @@ public class PowerUp : MonoBehaviour {
 			yield return null;
 		}
 
-		vignette.blur = 0f;
+		if (vignette != null)			
+			vignette.blur = 0f;
 
 	}
 

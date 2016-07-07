@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 
 	[System.Serializable]
 	public struct LevelInfo {
+		public string levelName;
 		public int buildSceneNumber; // scene number from build settings
 		public float maxTime; // max time for level to be complete before reset
 		public bool unlocked { get; set; } // level may be raced
@@ -114,6 +115,14 @@ public class GameController : MonoBehaviour {
 			Debug.Log ("Last level complete!");
 			// TODO game winning scene
 		}
+	}
+
+
+	public string GetCurrentLevelName() {
+		if (currentLevel > 0) {
+			return levels [currentLevel].levelName;
+		}
+		return "Menu";
 	}
 
 
