@@ -3,10 +3,9 @@ using System.Collections;
 
 public class Pause : MonoBehaviour {
 
-
 	private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show UI panels
 	private bool isPaused;								//Boolean to check if the game is paused or not
-	private GameController gc;							//Reference to the StartButton script
+	public bool canPause {get; set;}
 	
 	//Awake is called before Start()
 	void Awake()
@@ -14,11 +13,14 @@ public class Pause : MonoBehaviour {
 		//Get a component reference to ShowPanels attached to this object, store in showPanels variable
 		showPanels = GetComponent<ShowPanels> ();
 		//Get a component reference to StartButton attached to this object, store in startScript variable
-		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		canPause = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		if (!canPause)
+			return;
 
 		//Check if the Cancel button in Input Manager is down this frame (default is Escape key) and that game is not paused, and that we're not in main menu
 		if (Input.GetButtonDown ("Cancel") && !isPaused) 

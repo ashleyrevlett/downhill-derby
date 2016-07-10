@@ -56,7 +56,10 @@ public class GameController : MonoBehaviour {
 			SceneManager.LoadScene (0);
 
 		pause.UnPause(); // may enter from pause, so unpause just in case
+		pause.canPause = false; // don't allow pausing from menu scene
+
 		showPanels.ShowPanel("MenuPanel"); // in case we are starting from level with disabled menu
+
 
 	}
 
@@ -68,6 +71,7 @@ public class GameController : MonoBehaviour {
 	public void StartLevel(int levelNumber) {
 		
 		currentLevel = levelNumber;
+		pause.canPause = true;
 
 		if (levelNumber == 0) {
 			ShowMenuScene ();
@@ -82,7 +86,7 @@ public class GameController : MonoBehaviour {
 
 	private IEnumerator LoadDelayed(LevelInfo level) {
 
-		pause.UnPause (); // in case we are restarting level from pause screen
+		pause.UnPause (); // in case we are restarting level from pause screen, need to reneenable timestep here
 
 		fader.FadeToBlack ();
 
