@@ -1571,7 +1571,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422714, guid: a169047278cb142cfa6e61d6ed13964d, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11481114, guid: a169047278cb142cfa6e61d6ed13964d, type: 2}
       propertyPath: focalTransform
@@ -4129,7 +4129,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472216, guid: 7b3a012d1674d47458db6c5c7b009658, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 164570, guid: 7b3a012d1674d47458db6c5c7b009658, type: 2}
       propertyPath: m_Name
@@ -4593,7 +4593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22484110, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 22484110, guid: 89555604ec6f44d64839f703ec018d99, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -14239,7 +14239,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495280, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 495280, guid: 20a82a87bd4ef4f1489a5d3bad28f95d, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
