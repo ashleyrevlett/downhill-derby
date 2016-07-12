@@ -8,10 +8,11 @@ public class FadeScene : MonoBehaviour {
 	public float animTime { get; set; }
 
 	void Start() {
-		animTime = fadeAlphaAnimationClip.length * .5f;
+		animTime = fadeAlphaAnimationClip.length;
+		Debug.Log ("animTime: " + animTime);
 	}
 
-	public void FadeToBlack() {
+	public void Fade() {
 		animFade.SetTrigger ("fade");	
 	}
 

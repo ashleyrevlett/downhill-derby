@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour {
 
 		pause.UnPause (); // in case we are restarting level from pause screen, need to reneenable timestep here
 
-		fader.FadeToBlack ();
+		fader.Fade ();
 
 		yield return new WaitForSeconds (fader.animTime);
 
@@ -99,6 +99,7 @@ public class GameController : MonoBehaviour {
 		Debug.Log ("gc. LoadDelayed!!!");
 
 		if (level.buildSceneNumber != 0) {
+			fader.Fade (); // fade back in
 			lc = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController> ();
 			lc.StartLevel ();
 		}
