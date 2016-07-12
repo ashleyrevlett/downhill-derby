@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour {
 	}
 
 	public void StopTimer() {
-		Debug.Log ("Stopping timer");
+//		Debug.Log ("Stopping timer");
 		timerRunning = false;
 	}
 

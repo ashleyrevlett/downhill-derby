@@ -16,22 +16,45 @@ public class Recorder : MonoBehaviour {
 	bool isRecording = false;
 	GameController gc;
 	GameObject ghost;
+	GameObject player;
 
-	void Start () {
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+	void Awake () {
+		player = GameObject.FindGameObjectWithTag ("Player");
 		body = player.GetComponent<Rigidbody> ();
 		ghost = Instantiate (Resources.Load ("Ghost")) as GameObject;	
-		print ("player.transform.position: " + player.transform.position);
-		ghost.transform.position = player.transform.position;
-		ghost.transform.rotation = player.transform.rotation;
-//		ghost.SetActive (false);
 		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		states = new List<CarState> ();
 		recordings = new Recordings();
+
+
+
+	}
+
+
+	void Start () {
+	}
+
+
+	public void Setup() {
 		totalTimeElapsed = 0f;
 		counter = 0;
+
 		Load ();
+
+		RecordingData recording = recordings.GetRecording (gc.GetCurrentLevelName ());
+		if (recording.states != null && recording.states.Count > 0) {
+			ghost.SetActive (true);
+			CarState startState = recording.states [0];
+			ghost.transform.position = startState.position;
+			ghost.transform.rotation = startState.rotation;
+			Debug.Log ("START: ghost.transform.position: " + ghost.transform.position);
+		} else {
+			ghost.SetActive (false);
+		}
+
+
 	}
+
 
 	void FixedUpdate () {
 		if (!isRecording)
@@ -68,25 +91,37 @@ public class Recorder : MonoBehaviour {
 	}
 
 	public void PlayRecording() {
+		// called when countdown ends
 		RecordingData recording = recordings.GetRecording (gc.GetCurrentLevelName ());
-		if (recording.states != null) {
+		if (recording.states != null && recording.states.Count > 0) {
 			ghost.SetActive (true);
 			StartCoroutine (MoveGhost (recording));
+		} else {
+			Debug.Log ("No recording found");
 		}
 	}
+
+	public RecordingData GetRecording() {
+		return recordings.GetRecording (gc.GetCurrentLevelName ());
+	}
+
 
 	IEnumerator MoveGhost(RecordingData recording) {
  		List<CarState> reverseList = new List<CarState>(recording.states);
 		reverseList.Reverse ();
 		Stack stateStack = new Stack (reverseList);
 		float timeElapsed = 0f;
+
 		while (stateStack.Count > 0) {
 			
 			CarState currentState = (CarState)stateStack.Peek ();
 
-			while (timeElapsed >= currentState.timeElapsed && stateStack.Count > 1) {
+			while (timeElapsed >= currentState.timeElapsed && stateStack.Count > 0) {
+
 				ghost.transform.position = currentState.position;
 				ghost.transform.rotation = currentState.rotation;
+//				Debug.Log ("Moving GHOST: " + ghost.transform.position);
+
 				stateStack.Pop ();
 				currentState = (CarState)stateStack.Peek ();
 			}
@@ -118,8 +153,7 @@ public class Recorder : MonoBehaviour {
 		bf.Serialize(file, recordings);
 		file.Close();
 	}
-
-
+		
 	public void Load() {
 		Debug.Log ("Loading " + Application.persistentDataPath + "/" + fileName);
 		if (File.Exists(Application.persistentDataPath + "/" + fileName)) {
@@ -131,11 +165,10 @@ public class Recorder : MonoBehaviour {
 		}
 	}
 
-
 }
 	
 [Serializable]
-class Recordings {
+public class Recordings {
 	public List<RecordingData> recordings;
 
 	public Recordings() {
@@ -162,7 +195,7 @@ class Recordings {
 }
 
 [Serializable]
-class RecordingData {
+public class RecordingData {
 	public string levelName;
 	public float totalTime;
 	public List<CarState> states;

@@ -94,15 +94,20 @@ public class GameController : MonoBehaviour {
 
 		SceneManager.LoadScene (level.buildSceneNumber);
 
-	}
+		yield return null;
 
+		Debug.Log ("gc. LoadDelayed!!!");
 
-	void OnLevelWasLoaded(int level) {
-		if (level != 0) {
+		if (level.buildSceneNumber != 0) {
 			lc = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController> ();
 			lc.StartLevel ();
 		}
 
+	}
+
+
+	void OnLevelWasLoaded(int level) {
+		// not reliable, wtf
 	}
 		
 
@@ -124,7 +129,7 @@ public class GameController : MonoBehaviour {
 
 	public string GetCurrentLevelName() {
 		if (currentLevel > 0) {
-			return levels [currentLevel].levelName;
+			return levels [currentLevel - 1].levelName;
 		}
 		return "Menu";
 	}

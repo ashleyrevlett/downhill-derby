@@ -155,7 +155,6 @@ GameObject:
   - 114: {fileID: 11479800}
   - 114: {fileID: 11447992}
   - 82: {fileID: 8276900}
-  - 114: {fileID: 11493592}
   m_Layer: 5
   m_Name: LevelController
   m_TagString: LevelController
@@ -668,6 +667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490afbb043057453ab44f59eba982f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint1: {fileID: 0}
+  spawnPoint2: {fileID: 0}
   levelUI: {fileID: 140496}
   raceStarted: 0
 --- !u!114 &11440802
@@ -992,18 +993,6 @@ MonoBehaviour:
   panels:
   - panelObject: {fileID: 158586}
     panelTint: {fileID: 0}
---- !u!114 &11493592
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c20717966e704d489d55dd7c5995457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: recordings4.dat
 --- !u!114 &11494772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1255,7 +1244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22416090}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1276,8 +1265,8 @@ RectTransform:
   - {fileID: 22431996}
   - {fileID: 22433138}
   - {fileID: 22491240}
-  - {fileID: 22439848}
   - {fileID: 22414498}
+  - {fileID: 22439848}
   m_Father: {fileID: 22418310}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -1413,7 +1402,7 @@ RectTransform:
   - {fileID: 22423684}
   - {fileID: 22474956}
   m_Father: {fileID: 22416090}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}

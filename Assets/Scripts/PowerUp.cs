@@ -22,7 +22,6 @@ public class PowerUp : MonoBehaviour {
 		mesh = gameObject.GetComponent<MeshRenderer> ();
 		audio = GetComponent<AudioSource>();
 		vignette = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VignetteAndChromaticAberration> ();
-		Debug.Log ("vignette: " + vignette);
 	}
 	
 	// Update is called once per frame
@@ -65,10 +64,10 @@ public class PowerUp : MonoBehaviour {
 			float newBlur = Mathf.Lerp (maxBlur, 0f, percentComplete);
 			vignette.blur = newBlur;
 			timeElapsed += Time.deltaTime;
-
-			Debug.Log ("timeElapsed: " + timeElapsed);
-			Debug.Log ("percentComplete: " + percentComplete);
-			Debug.Log ("newBlur: " + newBlur);
+//
+//			Debug.Log ("timeElapsed: " + timeElapsed);
+//			Debug.Log ("percentComplete: " + percentComplete);
+//			Debug.Log ("newBlur: " + newBlur);
 
 			yield return null;
 		}
