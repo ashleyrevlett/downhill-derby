@@ -9,7 +9,7 @@ public class PowerUp : MonoBehaviour {
 	private float blurTimeToEnd = 2f;
 	private GameObject playerCar;
 	private Rigidbody playerBody;
-	private AudioSource audio;
+	private AudioSource powerUpaudio;
 	private bool isColliding = false;
 	private MeshRenderer mesh;
 	private VignetteAndChromaticAberration vignette;
@@ -20,7 +20,7 @@ public class PowerUp : MonoBehaviour {
 		playerCar = GameObject.FindGameObjectWithTag ("Player");
 		playerBody = playerCar.GetComponent<Rigidbody>();
 		mesh = gameObject.GetComponent<MeshRenderer> ();
-		audio = GetComponent<AudioSource>();
+		powerUpaudio = GetComponent<AudioSource>();
 		vignette = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VignetteAndChromaticAberration> ();
 	}
 	
@@ -44,7 +44,7 @@ public class PowerUp : MonoBehaviour {
 			StopAllCoroutines ();
 			isColliding = true;
 			Debug.Log ("POWERUP");
-			audio.PlayOneShot(audio.clip, 0.7F);
+			powerUpaudio.PlayOneShot(powerUpaudio.clip, 0.7F);
 			Vector3 force = playerCar.transform.forward * forwardForce;
 			playerBody.AddForce(force, ForceMode.Impulse);
 			StartCoroutine (BlurScreen ());
@@ -54,21 +54,21 @@ public class PowerUp : MonoBehaviour {
 
 	IEnumerator BlurScreen() {
 
+		if (vignette == null)	
+			vignette = Camera.main.GetComponent<VignetteAndChromaticAberration> ();
+		if (vignette == null)
+			yield break;
+
 		float timeElapsed = 0f;
 		float maxBlur = .7f;
-		if (vignette != null)			
-			vignette.blur = maxBlur;
+
+		vignette.blur = maxBlur;
 
 		while (timeElapsed < blurTimeToEnd) {
 			float percentComplete = timeElapsed / blurTimeToEnd;
 			float newBlur = Mathf.Lerp (maxBlur, 0f, percentComplete);
 			vignette.blur = newBlur;
 			timeElapsed += Time.deltaTime;
-//
-//			Debug.Log ("timeElapsed: " + timeElapsed);
-//			Debug.Log ("percentComplete: " + percentComplete);
-//			Debug.Log ("newBlur: " + newBlur);
-
 			yield return null;
 		}
 
