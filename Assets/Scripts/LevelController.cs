@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour {
 	Rigidbody carBody;
 	HighScores scores;
 	Recorder recorder;
+	FadeScene fader;
 
 	public bool raceStarted = false;
 
@@ -28,6 +29,7 @@ public class LevelController : MonoBehaviour {
 			gcObject = Instantiate (Resources.Load ("GameController")) as GameObject;
 
 		gc = gcObject.GetComponent<GameController> ();
+		fader = gcObject.GetComponent<FadeScene> ();
 
 		recorder = GetComponent<Recorder>();
 
@@ -137,6 +139,7 @@ public class LevelController : MonoBehaviour {
 	}
 
 	public void RestartRace() {
+		fader.Fade ();
 		int scene = SceneManager.GetActiveScene().buildIndex;
 		SceneManager.LoadScene(scene, LoadSceneMode.Single);
 		Debug.Log ("Restarting race...");

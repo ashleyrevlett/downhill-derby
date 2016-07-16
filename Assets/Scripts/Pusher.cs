@@ -36,10 +36,13 @@ public class Pusher : MonoBehaviour {
 		
 		if (!canPush)
 			return;
+
+		if (Input.GetButtonDown ("Push"))
+			print ("Pushing button!");
 		
 		float dist = Vector3.Distance (gameObject.transform.position, playerCar.transform.position);
 
-		if (Input.GetKeyDown (KeyCode.Space) && lc.raceStarted) 
+		if ((Input.GetKeyDown (KeyCode.Space) || Input.GetButtonDown("Push")) && lc.raceStarted) 
 			Push ();
 		
 		if (dist > maxDistanceToAnimate) 

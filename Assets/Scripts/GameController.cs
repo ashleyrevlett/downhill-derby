@@ -94,21 +94,23 @@ public class GameController : MonoBehaviour {
 
 		SceneManager.LoadScene (level.buildSceneNumber);
 
-		yield return null;
-
-		Debug.Log ("gc. LoadDelayed!!!");
-
-		if (level.buildSceneNumber != 0) {
-			fader.Fade (); // fade back in
-			lc = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController> ();
-			lc.StartLevel ();
-		}
-
 	}
 
 
 	void OnLevelWasLoaded(int level) {
-		// not reliable, wtf
+
+		Debug.Log ("onlevelwasloaded!!!");
+
+		if (level != 0) {
+			fader.Fade (); // fade back in
+
+			// have to wait for level to load
+			GameObject lcObject = GameObject.FindGameObjectWithTag("LevelController");
+			lc = lcObject.GetComponent<LevelController> ();
+
+			print ("STARTung LEVEL");
+			lc.StartLevel ();
+		}
 	}
 		
 
