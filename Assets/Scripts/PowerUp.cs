@@ -5,20 +5,22 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour {
 
-	private float forwardForce = 3500f;
-	private float blurTimeToEnd = 2f;
-	private GameObject playerCar;
-	private Rigidbody playerBody;
-	private AudioSource powerUpaudio;
-	private bool isColliding = false;
-	private MeshRenderer mesh;
-	private VignetteAndChromaticAberration vignette;
+	float forwardForce = 3700f;
+	float blurTimeToEnd = 2f;
+	GameObject playerCar;
+	Rigidbody playerBody;
+	AudioSource powerUpaudio;
+	bool isColliding = false;
+	MeshRenderer mesh;
+	VignetteAndChromaticAberration vignette;
+	WheelParticleEffects particles;
 
 
 	// Use this for initialization
 	void Start () {
 		playerCar = GameObject.FindGameObjectWithTag ("Player");
 		playerBody = playerCar.GetComponent<Rigidbody>();
+		particles = playerCar.GetComponent<WheelParticleEffects> ();
 		mesh = gameObject.GetComponent<MeshRenderer> ();
 		powerUpaudio = GetComponent<AudioSource>();
 		vignette = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VignetteAndChromaticAberration> ();
@@ -47,6 +49,7 @@ public class PowerUp : MonoBehaviour {
 			powerUpaudio.PlayOneShot(powerUpaudio.clip, 0.7F);
 			Vector3 force = playerCar.transform.forward * forwardForce;
 			playerBody.AddForce(force, ForceMode.Impulse);
+			particles.ShowParticles ();
 			StartCoroutine (BlurScreen ());
 			StartCoroutine (Disappear ());
 		}
